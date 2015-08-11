@@ -26,6 +26,7 @@ Then, I made a histogram of the total number of steps taken each day:
 ```{r}
 hist(total_steps, breaks = 10, col="gray", xlab="Number of steps")
 ```
+![plot of Chunk 3](instructions_fig/fig1.png) 
 
 The mean and median of the total number of steps taken per day are:
 
@@ -43,6 +44,7 @@ daily_pat <- tapply(activity$steps, activity$interval, mean, na.rm= T)
 plot(unique(activity$interval), daily_pat, type="l", xlab="5-minute interval",
      ylab= "Number of steps")
 ```
+![plot of Chunk 5](instructions_fig/fig2.png) 
 
 Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -82,6 +84,10 @@ Make a histogram of the total number of steps taken each day and calculate and r
 ```{r}
 total_steps_fill <- tapply(activity_fill$steps, activity_fill$date, sum, na.rm= T)
 hist(total_steps_fill, breaks = 10, col="gray", xlab="Number of steps")
+```
+![plot of Chunk 10](instructions_fig/fig3.png) 
+
+```{r}
 mean(total_steps_fill)
 median(total_steps_fill)
 ```
@@ -111,7 +117,8 @@ With the summrized dataset, I made a panel plot containing a time series plot of
 
 ```{r}
 library(lattice)
-xyplot(step ~ interval | week, data= avg_step, type= "l")
+xyplot(step ~ interval | week, data= avg_step, type= "l", layout= c(1,2))
 ```
+![plot of Chunk 14](instructions_fig/fig4.png) 
 
 We can see that on weekdays the number of steps is greater than on weekend.
